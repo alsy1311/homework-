@@ -1,0 +1,126 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+class Vector3D
+{
+protected:
+    unsigned int n;
+    int value;
+    unsigned int i;
+public:
+    vector<int>v;
+    Vector3D( )
+    {
+        this->n = 3;
+        v.resize(n);
+
+    }
+    ~Vector3D()
+    {
+    }
+//    функция, которая добавляет координаты
+    void setValue(unsigned int i , int value )
+    {
+        v[i] = value;
+    }
+  //  функция, которая возвращает координату
+    int getValue(unsigned int i) const
+    {
+        return v[i];
+    }
+    bool operator == (const Vector3D& v2) const {
+        unsigned int k = 0;
+        for (unsigned int i = 1; i < 4; i++)
+        {
+            if (v[i] == v2.getValue(i))
+            {
+                k = k + 1 ;
+            }
+        }
+        return k == n;
+        };
+
+    // Оператор != проверяет два вектора на неравенство,
+    // они не равны, если хотя бы одна координата отличается
+    bool operator != (const Vector3D& v2) const {
+        unsigned int m = 0;
+        for (unsigned int i = 1; i < 4; i++)
+        {
+            if (v[i] == v2.getValue(i))
+            {
+                m = m + 1 ;
+            }
+        }
+        return m != n;
+        };
+        Vector3D operator+ (const Vector3D& v2) const {
+        int t = 0;
+        Vector3D Sum;
+        for (unsigned int i = 1; i < 4; i++)
+        {
+            t = v[i] + v2.getValue(i);
+            Sum.setValue(i, t);
+        }
+        return Sum;
+        }
+        Vector3D operator- (const Vector3D& v2) const {
+        int f = 0;
+        Vector3D Sub;
+        for (unsigned int i = 1; i < 4 ; i++)
+        {
+            f = v[i] - v2.getValue(i);
+            Sub.setValue(i, f);
+        }
+        return Sub;
+        }
+        Vector3D operator* (const int& q) const {
+        int m = 0;
+        Vector3D Mult;
+        for (unsigned int i = 1; i < 4; i++)
+        {
+            m = q * v[i] ;
+            Mult.setValue(i, m);
+        }
+        return Mult;
+        }
+        int operator* (const Vector3D& v2) const {
+        int p = 0 ;
+        for (unsigned int i = 1; i < 4; i++)
+        {
+            p +=  v[i] * v2.getValue(i);
+        }
+        return p;
+        }
+};
+const Vector3D operator* (const int& q, const Vector3D& v)
+{
+    return v * q;
+}
+int main()
+{
+    int z = 0;
+    Vector3D a;
+    a.setValue(3, 4);
+    a.setValue(2, 3);
+    a.setValue(1, 2);
+
+    Vector3D b;
+    b.setValue(3, 8);
+    b.setValue(2, 7);
+    b.setValue(1, 6);
+
+   // cout << (a == b) << endl;
+   // cout << (a != b) << endl;
+
+    Vector3D c = a + b;
+    Vector3D d = c * 5;
+    Vector3D e = a - b;
+    z = a * b;
+
+
+    for(unsigned int i = 1; i < 4; ++i)
+    {
+        cout << d.getValue(i) << endl;
+    }
+    cout << z << endl;
+}
