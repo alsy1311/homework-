@@ -13,12 +13,12 @@ public:
     ~Vector3D()
     {
     }
-//    функция, которая добавляет координаты
+//    ГґГіГ­ГЄГ¶ГЁГї, ГЄГ®ГІГ®Г°Г Гї Г¤Г®ГЎГ ГўГ«ГїГҐГІ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ»
     void setValue(unsigned int i , int value )
     {
         v[i] = value;
     }
-  //  функция, которая возвращает координату
+  //  ГґГіГ­ГЄГ¶ГЁГї, ГЄГ®ГІГ®Г°Г Гї ГўГ®Г§ГўГ°Г Г№Г ГҐГІ ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГі
     int getValue(unsigned int i) const
     {
         return v[i];
@@ -35,8 +35,8 @@ public:
         return k == 3;
         };
 
-    // Оператор != проверяет два вектора на неравенство,
-    // они не равны, если хотя бы одна координата отличается
+    // ГЋГЇГҐГ°Г ГІГ®Г° != ГЇГ°Г®ГўГҐГ°ГїГҐГІ Г¤ГўГ  ГўГҐГЄГІГ®Г°Г  Г­Г  Г­ГҐГ°Г ГўГҐГ­Г±ГІГўГ®,
+    // Г®Г­ГЁ Г­ГҐ Г°Г ГўГ­Г», ГҐГ±Г«ГЁ ГµГ®ГІГї ГЎГ» Г®Г¤Г­Г  ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ  Г®ГІГ«ГЁГ·Г ГҐГІГ±Гї
     bool operator != (const Vector3D& v2) const {
         unsigned int m = 0;
         for (unsigned int i = 1; i < 4; i++)
@@ -98,7 +98,7 @@ friend class Vector3D;
 protected:
     vector<double> m;
 public:
-    // Конструктор вектора размерности n
+    // ГЉГ®Г­Г±ГІГ°ГіГЄГІГ®Г° ГўГҐГЄГІГ®Г°Г  Г°Г Г§Г¬ГҐГ°Г­Г®Г±ГІГЁ n
     Matrix()
     {
         m.resize(10);
@@ -107,7 +107,7 @@ public:
         m[i] = 0;
     }
     }
-    // Деструктор
+    // Г„ГҐГ±ГІГ°ГіГЄГІГ®Г°
     ~Matrix()
     {
 
@@ -116,14 +116,14 @@ public:
     {
         return m[i];
     }
-     // Задание значения i-ой координаты матрицы равным value,
-    // i находится в диапазоне от 0 до n-1
+     // Г‡Г Г¤Г Г­ГЁГҐ Г§Г­Г Г·ГҐГ­ГЁГї i-Г®Г© ГЄГ®Г®Г°Г¤ГЁГ­Г ГІГ» Г¬Г ГІГ°ГЁГ¶Г» Г°Г ГўГ­Г»Г¬ value,
+    // i Г­Г ГµГ®Г¤ГЁГІГ±Гї Гў Г¤ГЁГ ГЇГ Г§Г®Г­ГҐ Г®ГІ 0 Г¤Г® n-1
     void setValue(unsigned int i, double value)
     {
         m[i] = value;
     }
-//перегрузим операторы
-// Умножение матрицы на константу
+//ГЇГҐГ°ГҐГЈГ°ГіГ§ГЁГ¬ Г®ГЇГҐГ°Г ГІГ®Г°Г»
+// Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶Г» Г­Г  ГЄГ®Г­Г±ГІГ Г­ГІГі
         Matrix operator* (const int& q) const {
         Matrix Mult;
         for (unsigned int i = 1; i < 10; i++)
@@ -132,7 +132,7 @@ public:
         }
         return Mult;
         }
-// Сложение матриц
+// Г‘Г«Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶
         Matrix operator+ (const Matrix& m2) const {
         Matrix Sum;
         for (unsigned int i = 1; i < 10; i++)
@@ -141,7 +141,7 @@ public:
         }
         return Sum;
         }
-//Вычитание матриц
+//Г‚Г»Г·ГЁГІГ Г­ГЁГҐ Г¬Г ГІГ°ГЁГ¶
         Matrix operator- (const Matrix& m2) const {
         Matrix Sub;
         for (unsigned int i = 1; i < 10 ; i++)
@@ -150,7 +150,7 @@ public:
         }
         return Sub;
         }
-//Умножение матриц
+//Г“Г¬Г­Г®Г¦ГҐГ­ГЁГҐ Г¬Г ГІГ°ГЁГ¶
         Matrix operator* (const Matrix& m2) const {
         Matrix Multip;
         Multip.setValue(1, m[1] * m2.getValue(1) + m[2] * m2.getValue(4) + m[3] * m2.getValue(7));
